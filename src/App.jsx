@@ -13,16 +13,19 @@ const AdminDashboard = lazy(() => import('./components/AdminDashboard'))
 function App() {
   const reduceMotion = useReducedMotion()
   const referralCode = useMemo(() => getQueryReferralCode(), [])
-  const isAdminView = useMemo(() => {
+  const isAdminRoute = useMemo(() => {
     if (typeof window === 'undefined') return false
-    return new URLSearchParams(window.location.search).get('admin') === '1'
+    const path = window.location.pathname.replace(/\/+$/, '') || '/'
+    return path === '/admin'
   }, [])
 
   useEffect(() => {
-    document.title = 'Apply for Ignite-100 | TechTan'
+    document.title = isAdminRoute ? 'Ignite-100 Admin | TechTan' : 'Apply for Ignite-100 | TechTan'
 
     const description =
-      'Join the Ignite-100 tech training program. 3 months of intensive, hands-on training in Web Development, Data Analytics, Product Design, Digital Marketing, or AI & Automation.'
+      isAdminRoute
+        ? 'Ignite-100 admin route for secure registration monitoring and admin authentication.'
+        : 'Join the Ignite-100 tech training program. 3 months of intensive, hands-on training in Web Development, Data Analytics, Product Design, Digital Marketing, or AI & Automation.'
 
     let meta = document.querySelector('meta[name="description"]')
     if (!meta) {
@@ -31,18 +34,18 @@ function App() {
       document.head.appendChild(meta)
     }
     meta.setAttribute('content', description)
-  }, [])
+  }, [isAdminRoute])
 
-  if (isAdminView) {
+  if (isAdminRoute) {
     return (
       <Suspense
         fallback={
-          <div className="mx-auto grid min-h-screen w-[min(100%,calc(100%-20px))] place-items-center py-8 md:w-[min(1120px,calc(100%-32px))]">
+          <div className="grid min-h-screen place-items-center bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.18),transparent_24%),linear-gradient(180deg,#f8fafc_0%,#eef2f7_100%)] px-4 py-8">
             <div className="w-full max-w-[540px] rounded-[24px] border border-slate-900/[0.1] bg-white/90 p-7 shadow-panel backdrop-blur">
               <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.18em] text-accent-strong">
                 Ignite-100 admin
               </p>
-              <h1 className="mt-2 text-[clamp(1.6rem,3vw,2.2rem)] text-dark">Opening dashboard</h1>
+              <h1 className="mt-2 text-[clamp(1.6rem,3vw,2.2rem)] text-dark">Opening admin route</h1>
             </div>
           </div>
         }
