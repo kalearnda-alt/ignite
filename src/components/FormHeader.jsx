@@ -1,12 +1,23 @@
 function FormHeader() {
   return (
-    <div className="relative min-h-[152px] overflow-hidden">
-      <img src="/techtan-banner-form.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,23,42,0.9),rgba(30,41,59,0.76))]" />
-      <div className="relative z-10 px-6 py-7 text-center">
+    <div className="relative min-h-[160px] overflow-hidden">
+      <img
+        src="/techtan-banner-form.jpg"
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,23,42,0.92),rgba(30,41,59,0.78))]" />
+      <div className="absolute inset-x-0 top-0 h-[3px] bg-[linear-gradient(90deg,#f97316,#fb923c)]" />
+      <div className="relative z-10 flex flex-col items-center justify-center px-6 py-8 text-center">
+        <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.18em] text-orange-400">
+          TechTan · Ignite-100
+        </p>
         <h2 className="font-display text-[1.35rem] tracking-[-0.04em] text-white">
           Apply for Ignite-100
         </h2>
+        <p className="mt-2 text-[13px] text-white/55">
+          3 months · 5 tracks · Industry-ready skills
+        </p>
       </div>
     </div>
   )

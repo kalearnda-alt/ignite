@@ -41,7 +41,7 @@ function Banner() {
             transition={{ delay: 0.45, duration: 0.7 }}
           >
             Ignite
-            <span className="text-orange-400">-100</span>
+            <span className="text-green-400">-100</span>
           </Motion.h1>
 
           <Motion.p
@@ -63,7 +63,7 @@ function Banner() {
             <button
               type="button"
               onClick={scrollToForm}
-              className="group inline-flex items-center gap-2 rounded-xl bg-orange-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-orange-500/30 transition-all duration-200 hover:bg-orange-600 active:scale-95"
+              className="group inline-flex items-center gap-2 rounded-xl bg-green-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-green-500/30 transition-all duration-200 hover:bg-green-600 active:scale-95"
             >
               Apply Here
               <ArrowLeft className="h-4 w-4 transition-transform duration-200 group-hover:translate-y-0.5" />
