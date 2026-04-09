@@ -64,15 +64,15 @@ function App() {
         <svg viewBox="0 0 1440 1600" className="h-full w-full opacity-[0.95]" preserveAspectRatio="xMidYMid slice">
           <defs>
             <radialGradient id="home-glow-top" cx="22%" cy="10%" r="36%">
-              <stop offset="0%" stopColor="#fb923c" stopOpacity="0.24" />
-              <stop offset="100%" stopColor="#fb923c" stopOpacity="0" />
+              <stop offset="0%" stopColor="#22c55e" stopOpacity="0.24" />
+              <stop offset="100%" stopColor="#22c55e" stopOpacity="0" />
             </radialGradient>
             <radialGradient id="home-glow-bottom" cx="82%" cy="66%" r="34%">
               <stop offset="0%" stopColor="#0f172a" stopOpacity="0.09" />
               <stop offset="100%" stopColor="#0f172a" stopOpacity="0" />
             </radialGradient>
             <linearGradient id="home-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#fdba74" stopOpacity="0.45" />
+              <stop offset="0%" stopColor="#86efac" stopOpacity="0.45" />
               <stop offset="50%" stopColor="#cbd5e1" stopOpacity="0.22" />
               <stop offset="100%" stopColor="#94a3b8" stopOpacity="0.12" />
             </linearGradient>
@@ -99,7 +99,7 @@ function App() {
           <path
             d="M968 86C1053 57 1142 67 1226 112"
             fill="none"
-            stroke="#fdba74"
+            stroke="#86efac"
             strokeOpacity="0.45"
             strokeWidth="2"
             strokeLinecap="round"
@@ -114,11 +114,11 @@ function App() {
           />
 
           <g opacity="0.5">
-            <circle cx="182" cy="186" r="4" fill="#fb923c" />
+            <circle cx="182" cy="186" r="4" fill="#22c55e" />
             <circle cx="254" cy="224" r="6" fill="#0f172a" fillOpacity="0.18" />
-            <circle cx="1098" cy="576" r="5" fill="#fb923c" fillOpacity="0.65" />
+            <circle cx="1098" cy="576" r="5" fill="#22c55e" fillOpacity="0.65" />
             <circle cx="1202" cy="1048" r="4" fill="#0f172a" fillOpacity="0.18" />
-            <circle cx="286" cy="1244" r="5" fill="#fb923c" fillOpacity="0.5" />
+            <circle cx="286" cy="1244" r="5" fill="#22c55e" fillOpacity="0.5" />
           </g>
         </svg>
       </div>

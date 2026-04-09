@@ -6,9 +6,9 @@ const stats = [
     unit: 'Months',
     label: 'Program Duration',
     description: 'Full-time intensive training from fundamentals to industry-ready skills.',
-    accent: 'bg-[linear-gradient(90deg,#f97316,#fb923c)]',
-    glow: '#f97316',
-    stroke: '#fdba74',
+    accent: 'bg-[linear-gradient(90deg,#16a34a,#4ade80)]',
+    glow: '#16a34a',
+    stroke: '#86efac',
   },
   {
     value: '5',
@@ -24,9 +24,9 @@ const stats = [
     unit: '',
     label: 'Hands-on Learning',
     description: 'Every lesson tied to real projects, live mentorship, and portfolio-worthy output.',
-    accent: 'bg-[linear-gradient(90deg,#f97316,#fb923c)]',
-    glow: '#fb923c',
-    stroke: '#fed7aa',
+    accent: 'bg-[linear-gradient(90deg,#16a34a,#4ade80)]',
+    glow: '#4ade80',
+    stroke: '#bbf7d0',
   },
 ]
 
