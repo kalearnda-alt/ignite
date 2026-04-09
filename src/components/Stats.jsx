@@ -114,7 +114,7 @@ function Stats() {
             <h2 className="relative z-10 mt-5 font-display text-base font-extrabold leading-[1.2] tracking-[-0.03em] text-dark md:mt-4 md:text-[18px] lg:text-[1.2rem]">
               {stat.label}
             </h2>
-            <p className="relative z-10 mt-2.5 max-w-[24ch] text-[13px] leading-[1.65] text-slate-700 md:max-w-none md:text-sm md:leading-[1.75] lg:mt-3 lg:text-[15px]">
+            <p className="relative z-10 mt-10 max-w-[24ch] text-[13px] leading-[1.65] text-slate-800 md:max-w-none md:text-sm font-medium md:leading-[1.75] lg:mt-3 lg:text-[15px]">
               {stat.description}
             </p>
           </div>
