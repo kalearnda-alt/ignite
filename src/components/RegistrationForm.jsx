@@ -1,4 +1,4 @@
-import { Check } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, LoaderCircle } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import {
   AGE_RANGES,
@@ -164,13 +164,15 @@ function RegistrationForm({ initialReferralCode }) {
       <div className="flex flex-col gap-3 pt-0.5 md:flex-row">
         {currentStep > 1 && (
           <button type="button" className={`${secondaryButtonClass} w-full md:w-auto`} onClick={goBack}>
-            <span aria-hidden="true">&larr;</span> Back
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            Back
           </button>
         )}
 
         {currentStep < 3 ? (
           <button type="button" className={`${primaryButtonClass} w-full flex-1`} onClick={goNext}>
-            Continue <span aria-hidden="true">&rarr;</span>
+            Continue
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </button>
         ) : (
           <button
@@ -179,7 +181,11 @@ function RegistrationForm({ initialReferralCode }) {
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Submitting...' : 'Submit Application'}
-            <span aria-hidden="true">{isSubmitting ? '...' : '->'}</span>
+            {isSubmitting ? (
+              <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+            ) : (
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            )}
           </button>
         )}
       </div>
@@ -212,7 +218,7 @@ function StepProgress({ currentStep }) {
                       : 'border-transparent bg-slate-100 text-slate-400'
                 }`}
               >
-                {isDone ? <Check className="h-4 w-4" /> : step.id}
+                {isDone ? <Check className="h-4 w-4" aria-hidden="true" /> : step.id}
               </div>
               <span
                 className={`text-center text-[8px] font-extrabold uppercase tracking-[0.1em] md:text-[10px] md:tracking-[0.14em] ${
@@ -360,7 +366,9 @@ function StepTrack({ values, errors, updateField }) {
               <div className={`h-[14px] w-[14px] flex-none rounded-full ${tones[stack.tone]}`} />
               <div className="min-w-0 flex-1">
                 <strong className="block text-[13px] leading-[1.25] md:text-sm">{stack.label}</strong>
-                <span className={`mt-1 block text-[11px] leading-[1.5] ${active ? 'text-slate-200' : 'text-slate-500'}`}>
+                <span
+                  className={`mt-1 block text-[11px] leading-[1.5] ${active ? 'text-slate-200' : 'text-slate-500'}`}
+                >
                   {stack.description}
                 </span>
               </div>
@@ -371,7 +379,7 @@ function StepTrack({ values, errors, updateField }) {
                     : 'border-slate-900/10 text-transparent'
                 }`}
               >
-                {active ? '✓' : ''}
+                {active ? <Check className="h-3.5 w-3.5" aria-hidden="true" /> : null}
               </div>
             </button>
           )
@@ -443,7 +451,7 @@ function SuccessScreen({ name, containerRef }) {
   return (
     <div ref={containerRef} className="grid gap-[18px] px-0 py-[18px] text-centeritems-center justify-center ">
       <div className="mx-auto grid h-[72px] w-[72px] place-items-center rounded-full border border-emerald-500/20 bg-emerald-500/12 text-[32px] text-emerald-500">
-        <Check className='h-5 w-5' />
+        <Check className="h-5 w-5" aria-hidden="true" />
       </div>
       <h2 className="font-display text-[1.8rem] tracking-[-0.05em] text-dark">You're in, {name}!</h2>
       <p className="mx-auto max-w-[380px] text-center leading-[1.7] text-gray-900">
