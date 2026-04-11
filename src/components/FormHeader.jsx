@@ -1,6 +1,6 @@
 function FormHeader() {
   return (
-    <div className="relative min-h-[160px] overflow-hidden">
+    <div className="relative min-h-[160px] overflow-hidden rounded-t-[28px]">
       <img
         src="/techtan-banner-form.jpg"
         alt=""

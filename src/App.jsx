@@ -140,9 +140,9 @@ function App() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="overflow-hidden rounded-[28px] border border-slate-900/[0.1] bg-white/95 shadow-panel">
+            <div className="overflow-visible rounded-[28px] border border-slate-900/[0.1] bg-white/95 shadow-panel">
               <FormHeader />
-              <div className="px-[14px] pb-[18px] pt-4 md:px-[22px] md:pb-6 md:pt-[22px]">
+              <div className="relative overflow-visible px-[14px] pb-[18px] pt-4 md:px-[22px] md:pb-6 md:pt-[22px]">
                 <RegistrationForm initialReferralCode={referralCode} />
               </div>
             </div>

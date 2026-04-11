@@ -37,7 +37,7 @@ function Dropdown({ value, options, placeholder, onChange, hasError }) {
 
       {open && (
         <div
-          className="absolute left-0 right-0 top-[calc(100%+8px)] z-10 max-h-60 overflow-auto rounded-[18px] border border-slate-900/[0.08] bg-white/[0.99] p-2 shadow-[0_22px_40px_rgba(15,23,42,0.12)]"
+          className="absolute left-0 right-0 top-[calc(100%+8px)] z-30 max-h-60 overflow-auto rounded-[18px] border border-slate-900/[0.08] bg-white/[0.99] p-2 shadow-[0_22px_40px_rgba(15,23,42,0.12)]"
           role="listbox"
         >
           {options.map((option) => (
