@@ -8,9 +8,6 @@ function FormHeader() {
       />
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,23,42,0.92),rgba(30,41,59,0.78))]" />
       <div className="relative z-10 flex flex-col items-center justify-center px-6 py-8 text-center">
-        <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.18em] text-orange-400">
-          TechTan · Ignite-100
-        </p>
         <h2 className="font-display text-[1.35rem] tracking-[-0.04em] text-white">
           Apply for Ignite-100
         </h2>
