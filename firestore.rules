@@ -2,64 +2,26 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
     function isAdmin() {
-      return request.auth != null && request.auth.token.email == 'victortamunoibuomi07@gmail.com';
-    }
-
-    function allowedKeys() {
-      return [
-        'fullName',
-        'email',
-        'phone',
-        'gender',
-        'ageRange',
-        'educationLevel',
-        'institution',
-        'stack',
-        'motivation',
-        'heardFrom',
-        'referralCode',
-        'createdAt'
-      ];
-    }
-
-    function heardFromOptions() {
-      return [
-        'Instagram',
-        'Facebook',
-        'Twitter',
-        'WhatsApp',
-        'Friend or Colleague',
-        'School/University',
-        'Google Search',
-        'Email Newsletter',
-        'Event or Conference',
-        'Other'
-      ];
-    }
-
-    function lockKeys() {
-      return [
-        'registrationId',
-        'createdAt'
-      ];
+      return isSignedIn()
+      && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+      && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
     }
 
     function isValidRegistration(data) {
-      return data.keys().hasOnly(allowedKeys())
+      return data.keys().hasOnly([
+        'fullName', 'email', 'phone', 'gender', 'ageRange',
+        'educationLevel', 'institution', 'stack', 'motivation',
+        'heardFrom', 'referralCode', 'createdAt'
+      ])
       && data.keys().hasAll([
-        'fullName',
-        'email',
-        'phone',
-        'gender',
-        'ageRange',
-        'educationLevel',
-        'institution',
-        'stack',
-        'motivation',
-        'heardFrom',
-        'referralCode',
-        'createdAt'
+        'fullName', 'email', 'phone', 'gender', 'ageRange',
+        'educationLevel', 'institution', 'stack', 'motivation',
+        'heardFrom', 'referralCode', 'createdAt'
       ])
       && data.fullName is string
       && data.fullName.size() >= 2
@@ -76,37 +38,49 @@ service cloud.firestore {
       && data.institution is string
       && data.institution.size() >= 2
       && data.institution.size() <= 200
-      && data.stack in [
-        'data_analytics',
-        'digital_marketing',
-        'web_development',
-        'product_design',
-        'ai_automation'
-      ]
+      && data.stack in ['data_analytics', 'digital_marketing', 'web_development', 'product_design', 'ai_automation']
       && data.motivation is string
       && data.motivation.size() >= 50
       && data.motivation.size() <= 1000
-      && data.heardFrom is string
-      && data.heardFrom in heardFromOptions()
+      && data.heardFrom in ['Instagram', 'Facebook', 'Twitter', 'WhatsApp', 'Friend or Colleague', 'School/University', 'Google Search', 'Email Newsletter', 'Event or Conference', 'Other']
       && data.referralCode is string
       && data.referralCode.size() <= 100
-      && data.createdAt == request.time;
+      && data.createdAt is timestamp;
     }
 
     function isValidLock(data) {
-      return data.keys().hasOnly(lockKeys())
-      && data.keys().hasAll([
-        'registrationId',
-        'createdAt'
-      ])
+      return data.keys().hasOnly(['registrationId', 'createdAt'])
+      && data.keys().hasAll(['registrationId', 'createdAt'])
       && data.registrationId is string
       && data.registrationId.size() > 0
-      && data.createdAt == request.time;
+      && data.createdAt is timestamp;
+    }
+
+    function isValidUser(data, userId) {
+      return isSignedIn()
+      && request.auth.uid == userId
+      && data.keys().hasOnly(['uid', 'fullName', 'email', 'role', 'createdAt', 'updatedAt'])
+      && data.keys().hasAll(['uid', 'fullName', 'email', 'role', 'createdAt', 'updatedAt'])
+      && data.uid == request.auth.uid
+      && data.fullName is string
+      && data.fullName.size() >= 2
+      && data.fullName.size() <= 100
+      && data.email is string
+      && data.email.matches('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$')
+      && data.role == 'user'
+      && data.createdAt is timestamp
+      && data.updatedAt is timestamp;
     }
 
     match /registrations/{registrationId} {
       allow create: if isValidRegistration(request.resource.data);
       allow read, list: if isAdmin();
+      allow update, delete: if false;
+    }
+
+    match /users/{userId} {
+      allow create: if isValidUser(request.resource.data, userId);
+      allow read: if isAdmin() || (isSignedIn() && request.auth.uid == userId);
       allow update, delete: if false;
     }
 

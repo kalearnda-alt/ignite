@@ -453,7 +453,7 @@ function SuccessScreen({ name, containerRef }) {
       <div className="mx-auto grid h-[72px] w-[72px] place-items-center rounded-full border border-emerald-500/20 bg-emerald-500/12 text-[32px] text-emerald-500">
         <Check className="h-5 w-5" aria-hidden="true" />
       </div>
-      <h2 className="font-display text-[1.8rem] tracking-[-0.05em] text-dark">You're in, {name}!</h2>
+      <h2 className="font-display text-[1.8rem] tracking-[-0.05em] text-dark text-center">You're in, {name}!</h2>
       <p className="mx-auto max-w-[380px] text-center leading-[1.7] text-gray-900">
         Your application for <strong>Ignite-100</strong> has been received. Expect a response
         within 48 hours.
